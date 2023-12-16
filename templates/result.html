@@ -1,0 +1,53 @@
+<!-- result.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query Result</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #343a40;
+            color: #ffffff;
+        }
+        .container {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Query Result</h2>
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Birth</th>
+                    <th scope="col">SEXTYPENAME</th>
+                    <th scope="col">mathTestStatus</th>
+                    <th scope="col">mathBall100</th>
+                    <th scope="col">mathBall12</th>
+                    <th scope="col">mathBall</th>
+                    <th scope="col">location_id</th>
+                    <th scope="col">school_id</th>
+                    <th scope="col">Index</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in result %}
+                    <tr>
+                        {% for value in row %}
+                            <td>{{ value }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/" class="btn btn-primary">Back to Home</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

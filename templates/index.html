@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Database Web App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #343a40;
+            color: #ffffff;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .custom-container {
+            margin: 0 auto;
+            max-width: 800px;
+            padding: 20px;
+        }
+        .form-container {
+            background-color: #454d55;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        h4 {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container custom-container">
+        <h2 class="text-center">Database test stand</h2>
+
+        <!-- Query Block -->
+        <div class="form-container">
+            <h3 class="mt-3">Query Data:</h3>
+            <form action="/query" method="post">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="math_ball100_range_start">Lower boundary for math ball range:</label>
+                        <input type="number" class="form-control" name="math_ball100_range_start" min="100" max="200" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="math_ball100_range_end">Upper boundary for math ball range:</label>
+                        <input type="number" class="form-control" name="math_ball100_range_end" min="100" max="200" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="birth_year">Birth Year:</label>
+                        <input type="number" class="form-control" name="birth_year" pattern="\d{4}" title="Enter a 4-digit year between 1900 and the current year" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="sex_type">Sex Type:</label>
+                        <select class="form-control" name="sex_type">
+                            <option value="чоловіча">Чоловіча</option>
+                            <option value="жіноча">Жіноча</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Fetch results</button>
+            </form>
+        </div>
+
+        <!-- Insert Block -->
+        <div class="form-container">
+            <h3 class="mt-3">Insert Data:</h3>
+            <form action="/insert_zno_data_new" method="post">
+                <!-- Insert form for zno_data_new -->
+                <h4>ZNO Data New</h4>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="birth">Birth year:</label>
+                        <input type="text" class="form-control" name="birth" placeholder="Enter Birth..." pattern="\d{4}" title="Enter a 4-digit year between 1900 and the current year" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="sex_type">Sex Type:</label>
+                        <select class="form-control" name="sex_type" required>
+                            <option value="чоловіча">Чоловіча</option>
+                            <option value="жіноча">Жіноча</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="math_test_status">Math Test Status:</label>
+                        <select class="form-control" name="math_test_status" required>
+                            <option value="Зараховано">Зараховано</option>
+                            <option value="Анульовано">Анульовано</option>
+                            <option value="Не подолав поріг">Не подолав поріг</option>
+                            <option value="Не з'явився">Не з'явився</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="math_ball_100">Math Ball ZNO:</label>
+                        <input type="number" class="form-control" name="math_ball_100" placeholder="Enter value (100-200)..." min="100" max="200" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="math_ball_12">Math Ball DPA:</label>
+                        <input type="number" class="form-control" name="math_ball_12" placeholder="Enter value (1-12)..." min="1" max="12" required">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="math_ball">Math Ball (Test ball):</label>
+                        <input type="number" class="form-control" name="math_ball" placeholder="Enter Math Ball..." required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="location_id">Location ID:</label>
+                        <input type="number" class="form-control" name="location_id" placeholder="Enter Location ID..." min="0" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="school_id">School ID:</label>
+                        <input type="number" class="form-control" name="school_id" placeholder="Enter School ID..." min="0" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">Insert into zno_data_new</button>
+            </form>
+            <!-- Insert form for school -->
+            <form action="/insert_school" method="post">
+                <h4>School</h4>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="eoname">School name:</label>
+                        <input type="text" class="form-control" name="eoname" placeholder="Enter school name..." required>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="eotypename">School type(school/college/...):</label>
+                        <input type="text" class="form-control" name="eotypename" placeholder="Enter school type..." required>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">Insert into school</button>
+            </form>
+        </div>
+
+        <!-- Delete Block -->
+        <div class="form-container">
+            <h3 class="mt-3">Delete Data:</h3>
+            <!-- Delete form for zno_data_new -->
+            <form action="/delete" method="post">
+                <h4>ZNO Data New</h4>
+                <div class="form-group">
+                    <label for="delete_index_zno_data_new">Enter Index to Delete:</label>
+                    <input type="number" class="form-control" name="delete_index_zno_data_new" placeholder="Enter Index..." min="0">
+                </div>
+                <button type="submit" class="btn btn-danger">Delete from zno_data_new</button>
+            </form>
+            <!-- Delete form for school -->
+            <form action="/delete" method="post">
+                <h4>School</h4>
+                <div class="form-group">
+                    <label for="delete_school_id">Enter School ID to Delete:</label>
+                    <input type="number" class="form-control" name="delete_school_id" placeholder="Enter School ID..." min="0">
+                </div>
+                <button type="submit" class="btn btn-danger">Delete from school</button>
+            </form>
+            <!-- Delete form for location -->
+            <form action="/delete" method="post">
+                <h4>Location</h4>
+                <div class="form-group">
+                    <label for="delete_location_id">Enter Location ID to Delete:</label>
+                    <input type="number" class="form-control" name="delete_location_id" placeholder="Enter Location ID..." min="0">
+                </div>
+                <button type="submit" class="btn btn-danger">Delete from location</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
