@@ -18,3 +18,9 @@ Contains some query examples to test database performance
 
 ## service_worker.py
 Performs migration from the initial("dirty") database into 3 new, structured tables
+
+## to_mongo.py
+Performs migration of data from postgre to mongo 
+
+## mongo_queris.py
+Contains 5 example queries to test migration quality
